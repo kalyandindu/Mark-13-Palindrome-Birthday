@@ -122,28 +122,30 @@ function getNextDate(date){
 
 function getNextPalindromeDate(date){
 var count = 0;
+
 var nextDate = getNextDate(date);
-console.log(nextDate);
- var flag = false;
-    
+
+
    while(1){
+       var flag = false;
         console.log(nextDate);
         count++;
         var resultList = palindromeCheckForAllFormats(nextDate);
         for(let i = 0; i< resultList.length;i++){
             console.log(resultList[i]);
-            if(resultList[i]){
-            flag = true;
-        }
-
-        if(flag){
+            if(resultList[i] === true){
+                console.log("If statement executed");
+                flag = true;
             break;
-        }
-    }
-    nextDate = getNextDate(nextDate);
-    
+        
+            }
+
        
-   }
+        }
+        if(flag === true)
+        break;
+        nextDate = getNextDate(nextDate);
+    }
 
    return [count, nextDate];
    
@@ -188,23 +190,25 @@ function getPreviousDate(date){
 
 function getPreviuosPalindromeDate(date){
     var count = 0;
-    var flag = false;
-var previousDate = getPreviousDate(date);
+    
+    var previousDate = getPreviousDate(date);
 
     while(1){
-        
+        var flag = false;
         count++;
         var resultList = palindromeCheckForAllFormats(previousDate);
         for(let i = 0; i< resultList.length;i++){
-            if(resultList[i]){
+            if(resultList[i] === true){
                 flag = true;
-        }
-        if(flag){
-            break;
-        }
+                break;
+           }
         
-    }
-    previousDate = getPreviousDate(previousDate);
+        
+       }
+       if(flag === true)
+        break;
+
+      previousDate = getPreviousDate(previousDate);
     
    }
    return [count, previousDate];
